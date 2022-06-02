@@ -1,0 +1,10 @@
+<div class="container" style="position: fixed; bottom: 50px; left: 5%; width: 90%; z-index: 999;">
+{% if messages %}
+    {% for message in messages %}
+    <div class="notification is-primary is-light {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+        <button class="delete"></button>
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+</div>

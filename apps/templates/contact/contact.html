@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block body %}
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <h1 class="title is-1">Contact Us</h1>
+                    <form action="{% url 'contact' %}" method="POST" novalidate id="contact-form">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label class="label" for="{{ form.name.id_for_label }}">Name</label>
+                            <div class="control">
+                                {{ form.name }}
+                            </div>
+                            {% if form.name.help_text %}
+                                <p class="help">{{ form.name.help_text|safe }}</p>
+                            {% endif %}
+                            <ul id="name_errors">
+                            {% if form.name.errors %}
+                                {% for error in form.name.errors %}
+                                    <li class="help is-danger is-size-5">{{ error|escape }}</li>
+                                {% endfor %}
+                            {% endif %}
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="{{ form.email.id_for_label }}">Email</label>
+                            <div class="control">
+                                {{ form.email }}
+                            </div>
+                            {% if form.email.help_text %}
+                                <p class="help">{{ form.email.help_text|safe }}</p>
+                            {% endif %}
+                            {% if form.email.errors %}
+                                <ul>
+                                {% for error in form.email.errors %}
+                                    <li class="help is-danger is-size-5">{{ error|escape }}</li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <div class="field">
+                            <label class="label" for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                            <div class="control">
+                                {{ form.phone_number }}
+                            </div>
+                            {% if form.phone_number.help_text %}
+                                <p class="help">{{ form.phone_number.help_text|safe }}</p>
+                            {% endif %}
+                            <ul id="phone_number_errors">
+                            {% if form.phone_number.errors %}
+                                {% for error in form.phone_number.errors %}
+                                    <li class="help is-danger is-size-5">{{ error|escape }}</li>
+                                {% endfor %}
+                            {% endif %}
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="{{ form.message.id_for_label }}">Message</label>
+                            <div class="control">
+                                {{ form.message }}
+                            </div>
+                            {% if form.message.help_text %}
+                                <p class="help">{{ form.message.help_text|safe }}</p>
+                            {% endif %}
+                            <ul id="message_errors">
+                            {% if form.message.errors %}
+                                {% for error in form.message.errors %}
+                                    <li class="help is-danger is-size-5">{{ error|escape }}</li>
+                                {% endfor %}
+                            {% endif %}
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox" for="{{ form.consent.id_for_label }}">
+                                    {{ form.consent }}
+                                    I have read and accept the <a href="{% url 'legal' %}" target="_blank">Legal Notice &amp; the Privacy Policy</a>
+                                </label>
+                                {% if form.consent.help_text %}
+                                    <p class="help">{{ form.consent.help_text|safe }}</p>
+                                {% endif %}
+                                {% if form.consent.errors %}
+                                    <ul>
+                                    {% for error in form.consent.errors %}
+                                        <li class="help is-danger is-size-5">{{ error|escape }}</li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <button type="submit" class="button is-primary is-fullwidth">Send</button>
+                    </form>
+                    <br>
+                    <div class="block">
+                        <p><strong>Basic information</strong></p>
+                        <ul>
+                            <li>Responsible for the treatment: AIKREATE S.L.</li>
+                            <li>Purpose of the treatment: manage the queries of the users and attend to the requests.</li>
+                            <li>Legal basis for the treatment: the consent granted with the acceptance of this Data Protection Policy.</li>
+                            <li>Recipients of the data: they will not be communicated to third parties except by legal obligation.</li>
+                            <li>Rights: to exercise the rights of access, rectification, portability and deletion of your data and those of limitation and opposition to its
+                            treatment recognized by the regulations, you can send an email to info@pti-schools.com.</li>
+                        </ul>
+                        <br>
+                        <p>For more information about this treatment and how to exercise your rights, you can consult our complete data protection policy at:
+                            https://www.pti-schools.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+Pillow==9.1.0  # https://github.com/python-pillow/Pillow
+django-environ==0.8.1  # https://github.com/joke2k/django-environ
+Django==4.0.3
+django-storages[boto3]==1.12.3  # https://github.com/jschneier/django-storages
+django-phonenumber-field==6.1.0
+phonenumbers==8.12.46

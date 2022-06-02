@@ -1,0 +1,49 @@
+@charset "utf-8";
+// any customizations you want to make to bulma should go here
+// see https://bulma.io/documentation/customize/ for more information
+
+$white: hsl(0, 0%, 100%);
+$link: hsl(217, 71%, 53%); // copied from bulma
+$primary: #0582ca; // make link-blue the primary color
+$primary-invert: #FFF;
+$primary-light: #e3f2fd;
+$primary-dark: #003554;
+$family-primary: "Inter",
+sans-serif;
+$bg-grey: hsl(0, 0%, 98%);
+$default-shadow: 0 2px 4px rgba(55, 63, 67, 0.3);
+$body-background-color: #FFF;
+$body-weight: 500;
+
+$navbar-item-hover-background-color: transparent;
+$navbar-item-hover-color: $primary;
+$navbar-item-active-color: $primary-dark;
+$navbar-dropdown-item-hover-background-color: $primary-light;
+$navbar-dropdown-item-hover-color: $primary-dark;
+
+$footer-background-color: $primary;
+
+@import "~bulma/bulma";
+
+:root {
+  --primary: #{$primary};
+  --danger: #{$danger};
+  --success: #{$success};
+  --gray: #{$grey-light};
+}
+
+a.navbar-item {
+  border-bottom: 5px solid transparent;
+}
+
+a.navbar-item:hover {
+  border-bottom: 5px solid #{$primary};
+}
+
+div.navbar-item.has-dropdown a.navbar-item {
+  border-bottom: 0px;
+}
+
+.topNav {
+  border-top: 5px solid #3498DB;
+}

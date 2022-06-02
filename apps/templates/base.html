@@ -1,0 +1,66 @@
+{% load static i18n %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}PTI{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The definitive curriculum management Planning Tool for Innovative Schools">
+    <meta name="author" content="PTI">
+
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/site-bulma.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&amp;display=swap" rel="stylesheet">
+
+    <!-- Your stuff: Third-party CSS libraries go here -->
+    <!-- This file stores project-specific CSS -->
+    <link rel="stylesheet" href="{% static 'css/site-base.css' %}">
+    {% block extra_css %}{% endblock %}
+    {% endblock %}
+    <!-- Le javascript
+    ================================================== -->
+    {# Placed at the top of the document so pages load faster with defer #}
+    {% block javascript %}
+    <!-- Your stuff: Third-party javascript libraries go here -->
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				(document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+					const $notification = $delete.parentNode;
+					$delete.addEventListener('click', () => {
+						$notification.parentNode.removeChild($notification);
+					});
+				});
+			});
+    </script>
+    {% endblock javascript %}
+    {% block GA %}
+      {% include 'components/analytics.html' %}
+    {% endblock %}
+  </head>
+
+  <body>
+    {% block body_wrapper %}
+    {% block top_nav %}
+      {% include 'components/top_nav.html' %}
+    {% endblock %}
+    {% block messages %}
+      {% include 'components/messages.html' %}
+    {% endblock messages %}
+    {% block body %}
+    {% endblock body %}
+    {% block footer %}
+      {% include 'components/footer.html' %}
+    {% endblock footer %}
+    {% endblock body_wrapper %}
+    {% block page_js %}
+    {% endblock page_js %}
+  </body>
+</html>
